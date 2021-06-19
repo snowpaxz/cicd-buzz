@@ -1,5 +1,5 @@
 FROM alpine:3.5
-EXPOSE 5000
+EXPOSE 192.168.4.89:5000
 RUN apk add --update python py-pip
 COPY requirements.txt /src/requirements.txt
 RUN pip install -r /src/requirements.txt
