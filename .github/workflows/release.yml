@@ -33,7 +33,8 @@ jobs:
       - name: Test with pytest
         run: |
           python -m pytest -v tests/test_generator.py
-          
+
+
   docker:
     name: Publish - Docker Hub
     runs-on: ubuntu-latest
