@@ -1,8 +1,12 @@
 FROM alpine:latest
-RUN apk add --update python3 py-pip
-RUN pip install --upgrade pip
+
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
+
 COPY requirements.txt /src/requirements.txt
-RUN pip install -r /src/requirements.txt
+RUN pip3 install -r /src/requirements.txt
 COPY app.py /src
 COPY buzz /src/buzz
 COPY yo_mama /src/yo_mama
