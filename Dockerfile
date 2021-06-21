@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" > /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
 
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 python-dev gfortran py3-pip build-base py3-numpy@community && \
