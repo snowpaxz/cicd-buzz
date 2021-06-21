@@ -1,9 +1,12 @@
 FROM alpine:latest
+ADD repositories /etc/apk/repositories
 
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python && \
+RUN apk add --update --no-cache python3 python-dev gfortran py3-pip build-base py3-numpy@community && \
+    ln -sf python3 /usr/bin/python && \
     python3 -m ensurepip && \
     pip3 install --no-cache --upgrade pip setuptools
+
 
 RUN python3 -m venv /opt/venv
 
