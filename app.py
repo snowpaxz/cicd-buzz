@@ -23,9 +23,9 @@ def generate_site():
     page += '</p>'
 
     # Animation
-    moving.init()
-    page += '< video width = "640" height = "480" controls > \
-< source src = "basic_animation.mp4" type = "video/mp4" > < / video >'
+#    moving.init()
+ #   page += '< video width = "640" height = "480" controls > \
+#< source src = "basic_animation.mp4" type = "video/mp4" > < / video >'
 
     # End Page
     page += '</body></html>'
