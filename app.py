@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from buzz import generator
 from yo_mama import mama
+from animatebasic import moving
 
 app = Flask(__name__)
 
@@ -20,6 +21,11 @@ def generate_site():
     page += '<p>'
     page += mama.generate_joke()
     page += '</p>'
+
+    # Animation
+    moving.init()
+    page += '< video width = "640" height = "480" controls > \
+< source src = "basic_animation.mp4" type = "video/mp4" > < / video >'
 
     # End Page
     page += '</body></html>'
