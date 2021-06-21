@@ -1,5 +1,5 @@
 FROM alpine:latest
-ADD repositories /etc/apk/repositories
+
 
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 python-dev gfortran py3-pip build-base py3-numpy@community && \
