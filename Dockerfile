@@ -2,18 +2,13 @@ FROM alpine:latest
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" > /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
+RUN apk --no-cache --update-cache add gcc gfortran python python-dev py-pip \
+    build-base wget freetype-dev libpng-dev openblas-dev
 
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 python-dev gfortran py3-pip build-base py3-numpy@community && \
-    ln -sf python3 /usr/bin/python && \
-    python3 -m ensurepip && \
-    pip3 install --no-cache --upgrade pip setuptools
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+RUN pip install numpy scipy pandas matplotlib pytest Flask
 
 
-RUN python3 -m venv /opt/venv
-
-COPY requirements.txt /src/requirements.txt
-RUN pip3 install -r /src/requirements.txt
 
 COPY app.py /src
 COPY buzz /src/buzz
