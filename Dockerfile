@@ -3,7 +3,7 @@ FROM alpine:latest
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" > /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
 RUN apk --update-cache add gcc gfortran python3 python3-dev jpeg-dev py3-pip py3-wheel
-RUN apk --update-cache add build-base wget freetype-dev libpng-dev openblas-dev mencoder
+RUN apk --update-cache add build-base wget freetype-dev libpng-dev openblas-dev ffmpeg
 
 COPY requirements.txt /src/requirements.txt
 RUN pip3 install -r /src/requirements.txt
